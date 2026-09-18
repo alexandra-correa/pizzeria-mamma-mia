@@ -2,6 +2,10 @@
 
 Proyecto desarrollado con React y Vite como parte del Módulo 5 de Desafío Latam.
 
+## Demo
+
+[Ver proyecto en vivo](https://alexandra-correa.github.io/pizzeria-mamma-mia/)
+
 ## Descripción
 
 Pizzería Mamma Mia es una aplicación web desarrollada en React que permite visualizar diferentes pizzas, sus ingredientes y precios.
@@ -41,6 +45,8 @@ pizzeria-mamma-mia/
 │   │   └── Navbar.jsx
 │   ├── pages/
 │   │   └── Home.jsx
+│   ├── views/
+│   │   └── Home.jsx
 │   ├── App.css
 │   ├── App.jsx
 │   ├── index.css
@@ -73,6 +79,12 @@ Para generar la versión de producción:
 ```bash
 npm run build
 ```
+
+## Deploy
+
+El proyecto está publicado mediante GitHub Pages.
+
+[Ver aplicación publicada](https://alexandra-correa.github.io/pizzeria-mamma-mia/)
 
 ## Autor
 
