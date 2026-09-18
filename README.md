@@ -1,16 +1,81 @@
-# React + Vite
+# Pizzería Mamma Mia
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Proyecto desarrollado con React y Vite como parte del Módulo 5 de Desafío Latam.
 
-Currently, two official plugins are available:
+## Descripción
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Pizzería Mamma Mia es una aplicación web desarrollada en React que permite visualizar diferentes pizzas, sus ingredientes y precios.
 
-## React Compiler
+El proyecto busca aplicar los principales conceptos trabajados durante el módulo, utilizando componentes reutilizables y una estructura organizada.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tecnologías utilizadas
 
-## Expanding the ESLint configuration
+* React
+* Vite
+* JavaScript
+* HTML5
+* CSS3
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Funcionalidades
+
+* Visualización de pizzas.
+* Tarjetas reutilizables para cada pizza.
+* Visualización de imágenes.
+* Nombre, precio e ingredientes de cada producto.
+* Navbar de navegación.
+* Header principal.
+* Footer.
+* Diseño responsive.
+
+## Estructura del proyecto
+
+```text
+pizzeria-mamma-mia/
+├── public/
+├── src/
+│   ├── assets/
+│   ├── components/
+│   │   ├── CardPizza.jsx
+│   │   ├── Footer.jsx
+│   │   ├── Header.jsx
+│   │   └── Navbar.jsx
+│   ├── pages/
+│   │   └── Home.jsx
+│   ├── App.css
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+├── index.html
+├── package.json
+└── vite.config.js
+```
+
+## Instalación
+
+Para ejecutar el proyecto localmente, primero se deben instalar las dependencias:
+
+```bash
+npm install
+```
+
+Luego iniciar el servidor de desarrollo:
+
+```bash
+npm run dev
+```
+
+La aplicación estará disponible en la dirección local indicada por Vite.
+
+## Build de producción
+
+Para generar la versión de producción:
+
+```bash
+npm run build
+```
+
+## Autor
+
+Alexandra Correa
+
+Proyecto realizado como parte del programa de formación de Desafío Latam.
