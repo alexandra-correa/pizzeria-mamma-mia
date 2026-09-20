@@ -1,243 +1,228 @@
-* {
-  box-sizing: border-box;
+/* LOGIN */
+
+.login-container {
+min-height: 80vh;
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 40px 20px;
+background-color: #f8f8f8;
 }
 
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #f5f5f5;
-  color: #333;
+.login-card {
+width: 100%;
+max-width: 420px;
+background: white;
+padding: 35px;
+border-radius: 15px;
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+text-align: center;
 }
 
-/* NAVBAR */
-
-.navbar {
-  background-color: #111;
-  color: white;
-  padding: 15px 30px;
-  width: 100%;
+.login-card h1 {
+font-size: 28px;
+margin-bottom: 30px;
+color: #222;
 }
 
-.navbar-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
+.form-group {
+text-align: left;
+margin-bottom: 20px;
 }
 
-.navbar-brand {
-  font-size: 20px;
-  font-weight: bold;
+.form-group label {
+display: block;
+font-size: 15px;
+font-weight: 600;
+margin-bottom: 8px;
+color: #333;
 }
 
-.navbar-buttons {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
+.form-group input {
+width: 100%;
+box-sizing: border-box;
+padding: 12px 14px;
+border: 1px solid #ccc;
+border-radius: 8px;
+font-size: 15px;
+outline: none;
 }
 
-.nav-button {
-  background-color: transparent;
-  color: white;
-  border: 1px solid #777;
-  border-radius: 5px;
-  padding: 8px 12px;
-  cursor: pointer;
-  font-size: 14px;
+.form-group input:focus {
+border-color: #e63946;
 }
 
-.nav-button:hover {
-  background-color: #333;
+.login-button,
+.register-button {
+width: 100%;
+padding: 12px;
+border: none;
+border-radius: 8px;
+font-size: 15px;
+font-weight: 600;
+cursor: pointer;
 }
 
-.total-button {
-  border-color: #dc3545;
+.login-button {
+background-color: #e63946;
+color: white;
+margin-top: 5px;
 }
 
-/* HEADER */
-
-.hero {
-  min-height: 350px;
-  background-image: url("https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1600&q=80");
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+.login-button:hover {
+background-color: #c92f3b;
 }
 
-.hero-overlay {
-  width: 100%;
-  min-height: 350px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 30px;
-  background-color: rgba(0, 0, 0, 0.55);
-  color: white;
+.register-text {
+margin: 25px 0 10px;
+color: #666;
+font-size: 14px;
 }
 
-.hero h1 {
-  margin: 0 0 15px;
-  font-size: 42px;
+.register-button {
+background-color: transparent;
+color: #e63946;
+border: 1px solid #e63946;
 }
 
-.hero p {
-  margin: 0;
-  font-size: 20px;
+.register-button:hover {
+background-color: #e63946;
+color: white;
 }
 
 /* HOME */
 
 .home {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 20px 60px;
+min-height: 70vh;
+background-color: #f5f5f5;
+padding: 40px 20px 60px;
 }
 
 .section-title {
-  text-align: center;
-  font-size: 32px;
-  margin: 0 0 35px;
+text-align: center;
+font-size: 32px;
+color: #222;
+margin: 10px 0 35px;
 }
 
 /* PIZZAS */
 
 .pizza-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
+max-width: 1100px;
+margin: 0 auto;
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 25px;
 }
 
-/* CARD */
-
 .pizza-card {
-  background-color: white;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
-  border: 1px solid #ddd;
+background-color: white;
+border-radius: 15px;
+overflow: hidden;
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pizza-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
 }
 
 .pizza-image {
-  width: 100%;
-  height: 230px;
-  object-fit: cover;
-  display: block;
+width: 100%;
+height: 220px;
+object-fit: cover;
+display: block;
 }
 
 .pizza-content {
-  padding: 20px;
-  text-align: center;
+padding: 20px;
+text-align: center;
 }
 
 .pizza-content h2 {
-  margin: 0 0 20px;
-  font-size: 25px;
+margin: 0 0 15px;
+font-size: 24px;
+color: #222;
 }
 
 .ingredients-title {
-  margin: 0 0 8px;
-  font-weight: bold;
+margin: 0 0 5px;
+font-weight: bold;
+color: #333;
 }
 
 .ingredients {
-  min-height: 48px;
-  margin: 0 0 20px;
-  color: #666;
-  line-height: 1.5;
+margin: 0 0 15px;
+color: #666;
+font-size: 14px;
+line-height: 1.5;
 }
 
 .pizza-price {
-  margin: 0 0 20px;
-  font-size: 25px;
-  font-weight: bold;
+margin: 10px 0 20px;
+font-size: 24px;
+font-weight: bold;
+color: #e63946;
 }
+
+/* BOTONES */
 
 .pizza-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
+display: flex;
+gap: 10px;
+justify-content: center;
 }
 
-.pizza-buttons button {
-  border: none;
-  border-radius: 5px;
-  padding: 10px 15px;
-  cursor: pointer;
-  font-size: 14px;
+.details-button,
+.add-button {
+flex: 1;
+padding: 10px 8px;
+border-radius: 8px;
+font-size: 14px;
+font-weight: 600;
+cursor: pointer;
 }
 
 .details-button {
-  background-color: #333;
-  color: white;
-}
-
-.add-button {
-  background-color: #dc3545;
-  color: white;
+background-color: white;
+color: #e63946;
+border: 1px solid #e63946;
 }
 
 .details-button:hover {
-  background-color: #555;
+background-color: #e63946;
+color: white;
+}
+
+.add-button {
+background-color: #e63946;
+color: white;
+border: 1px solid #e63946;
 }
 
 .add-button:hover {
-  background-color: #b52b39;
-}
-
-/* FOOTER */
-
-.footer {
-  background-color: #111;
-  color: white;
-  text-align: center;
-  padding: 25px 15px;
-}
-
-.footer p {
-  margin: 0;
+background-color: #c92f3b;
 }
 
 /* RESPONSIVE */
 
 @media (max-width: 900px) {
-  .navbar-container {
-    flex-direction: column;
-  }
-
-  .pizza-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.pizza-container {
+grid-template-columns: repeat(2, 1fr);
+}
 }
 
-@media (max-width: 600px) {
-  .navbar {
-    padding: 15px;
-  }
+@media (max-width: 576px) {
+.pizza-container {
+grid-template-columns: 1fr;
+}
 
-  .navbar-buttons {
-    justify-content: center;
-  }
+.section-title {
+font-size: 26px;
+}
 
-  .hero h1 {
-    font-size: 32px;
-  }
-
-  .hero p {
-    font-size: 17px;
-  }
-
-  .pizza-container {
-    grid-template-columns: 1fr;
-  }
-
-  .pizza-image {
-    height: 250px;
-  }
+.pizza-buttons {
+flex-direction: column;
+}
 }
