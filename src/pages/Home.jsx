@@ -1,16 +1,17 @@
-import Header from "../components/Header";
+﻿import Header from "../components/Header";
+import Navbar from "../components/Navbar";
 import CardPizza from "../components/CardPizza";
 
 function Home() {
   return (
     <>
+      <Navbar />
       <Header />
 
       <main className="home">
         <h2 className="section-title">Nuestras Pizzas</h2>
 
         <div className="pizza-container">
-
           <CardPizza
             name="Napolitana"
             price={5950}
@@ -45,7 +46,6 @@ function Home() {
             ]}
             img="https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=800&q=80"
           />
-
         </div>
       </main>
     </>
