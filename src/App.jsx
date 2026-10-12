@@ -1,22 +1,16 @@
-﻿import Navbar from "./components/Navbar";
+import { useState } from "react";
+import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Cart from "./components/Cart";
-
-// Componentes de los hitos anteriores:
-// import Login from "./components/Login";
-// import Register from "./components/Register";
-// import Home from "./pages/Home";
-
 import "./App.css";
 
 function App() {
+  const [cartTotal, setCartTotal] = useState(25840);
+
   return (
     <>
-      <Navbar />
-      {/* <Home /> */}
-      {/* <Login /> */}
-      {/* <Register /> */}
-      <Cart />
+      <Navbar total={cartTotal} />
+      <Cart onTotalChange={setCartTotal} />
       <Footer />
     </>
   );

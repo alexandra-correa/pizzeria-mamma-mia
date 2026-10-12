@@ -1,5 +1,4 @@
-function Navbar() {
-  const total = 25000;
+function Navbar({ total = 25840 }) {
   const token = false;
 
   return (
@@ -27,112 +26,29 @@ function Navbar() {
           boxSizing: "border-box",
         }}
       >
-        <div
-          className="navbar-brand"
-          style={{
-            fontSize: "20px",
-            fontWeight: "bold",
-          }}
-        >
+        <div style={{ fontSize: "20px", fontWeight: "bold" }}>
           Pizzería Mamma Mia!
         </div>
 
         <div
           className="navbar-buttons"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "10px",
-          }}
+          style={{ display: "flex", alignItems: "center", gap: "10px" }}
         >
-          <button
-            className="nav-button"
-            style={{
-              backgroundColor: "transparent",
-              color: "white",
-              border: "none",
-              padding: "10px 12px",
-              fontSize: "14px",
-              cursor: "pointer",
-            }}
-          >
-            Home
-          </button>
+          <button className="nav-button">Home</button>
 
           {token ? (
             <>
-              <button
-                className="nav-button"
-                style={{
-                  backgroundColor: "transparent",
-                  color: "white",
-                  border: "none",
-                  padding: "10px 12px",
-                  fontSize: "14px",
-                  cursor: "pointer",
-                }}
-              >
-                Profile
-              </button>
-
-              <button
-                className="nav-button"
-                style={{
-                  backgroundColor: "transparent",
-                  color: "white",
-                  border: "none",
-                  padding: "10px 12px",
-                  fontSize: "14px",
-                  cursor: "pointer",
-                }}
-              >
-                Logout
-              </button>
+              <button className="nav-button">Profile</button>
+              <button className="nav-button">Logout</button>
             </>
           ) : (
             <>
-              <button
-                className="nav-button"
-                style={{
-                  backgroundColor: "transparent",
-                  color: "white",
-                  border: "none",
-                  padding: "10px 12px",
-                  fontSize: "14px",
-                  cursor: "pointer",
-                }}
-              >
-                Login
-              </button>
-
-              <button
-                className="nav-button"
-                style={{
-                  backgroundColor: "transparent",
-                  color: "white",
-                  border: "none",
-                  padding: "10px 12px",
-                  fontSize: "14px",
-                  cursor: "pointer",
-                }}
-              >
-                Register
-              </button>
+              <button className="nav-button">Login</button>
+              <button className="nav-button">Register</button>
             </>
           )}
 
-          <button
-            className="nav-button total-button"
-            style={{
-              backgroundColor: "transparent",
-              color: "white",
-              border: "1px solid white",
-              padding: "10px 12px",
-              fontSize: "14px",
-              cursor: "pointer",
-              borderRadius: "6px",
-            }}
-          >
+          <button className="nav-button total-button">
             Total: ${total.toLocaleString("es-CL")}
           </button>
         </div>

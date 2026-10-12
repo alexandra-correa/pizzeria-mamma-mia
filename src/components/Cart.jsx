@@ -1,8 +1,17 @@
-﻿import { useState } from "react";
+﻿import { useEffect, useState } from "react";
 import { pizzaCart } from "../data/pizzas";
 
-function Cart() {
+function Cart({ onTotalChange }) {
   const [cart, setCart] = useState(pizzaCart);
+
+  const total = cart.reduce(
+    (sum, pizza) => sum + pizza.price * pizza.quantity,
+    0
+  );
+
+  useEffect(() => {
+    onTotalChange(total);
+  }, [total, onTotalChange]);
 
   const increaseQuantity = (id) => {
     setCart((currentCart) =>
@@ -26,11 +35,6 @@ function Cart() {
     );
   };
 
-  const total = cart.reduce(
-    (sum, pizza) => sum + pizza.price * pizza.quantity,
-    0
-  );
-
   return (
     <main className="cart-page">
       <h1>Detalles del pedido</h1>
@@ -45,7 +49,9 @@ function Cart() {
 
               <div className="cart-item-info">
                 <h2>{pizza.name}</h2>
-                <p>Precio unitario: ${pizza.price.toLocaleString("es-CL")}</p>
+                <p>
+                  Precio unitario: ${pizza.price.toLocaleString("es-CL")}
+                </p>
                 <p>
                   Subtotal: $
                   {(pizza.price * pizza.quantity).toLocaleString("es-CL")}
@@ -60,7 +66,9 @@ function Cart() {
                 >
                   -
                 </button>
+
                 <span>{pizza.quantity}</span>
+
                 <button
                   type="button"
                   onClick={() => increaseQuantity(pizza.id)}
@@ -76,7 +84,9 @@ function Cart() {
 
       <div className="cart-total">
         <h2>Total: ${total.toLocaleString("es-CL")}</h2>
-        <button type="button" className="pay-button">Pagar</button>
+        <button type="button" className="pay-button">
+          Pagar
+        </button>
       </div>
     </main>
   );
