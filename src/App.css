@@ -288,3 +288,151 @@ flex-direction: column;
     justify-content: center;
   }
 }
+/* HITO 3: INGREDIENTES */
+.ingredients-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 15px;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* HITO 3: CARRITO */
+.cart-page {
+  max-width: 1000px;
+  min-height: 65vh;
+  margin: 0 auto;
+  padding: 35px 20px 50px;
+  color: #222;
+}
+
+.cart-page > h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.cart-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 18px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item img {
+  width: 120px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.cart-item-info {
+  flex: 1;
+}
+
+.cart-item-info h2 {
+  margin: 0 0 10px;
+  font-size: 20px;
+}
+
+.cart-item-info p {
+  margin: 6px 0;
+  color: #555;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.quantity-controls button {
+  width: 35px;
+  height: 35px;
+  border: none;
+  border-radius: 6px;
+  background: #e63946;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.quantity-controls button:hover,
+.pay-button:hover {
+  background: #c92f3b;
+}
+
+.quantity-controls span {
+  min-width: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.cart-total {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 15px;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+}
+
+.cart-total h2 {
+  color: #e63946;
+}
+
+.pay-button {
+  padding: 12px 30px;
+  background: #e63946;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.empty-cart {
+  text-align: center;
+  padding: 35px 10px;
+  color: #666;
+}
+
+@media (max-width: 600px) {
+  .cart-item {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .cart-item img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .cart-item-info {
+    min-width: 150px;
+  }
+
+  .quantity-controls {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .cart-total {
+    align-items: stretch;
+  }
+
+  .cart-total h2 {
+    text-align: right;
+  }
+}
