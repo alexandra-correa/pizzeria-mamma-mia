@@ -1,51 +1,58 @@
-# Pizzería Mamma Mia
+﻿# Pizzería Mamma Mia
 
 Proyecto desarrollado con React y Vite como parte del Módulo 5 de Desafío Latam.
 
-## Demo
+## Aplicación publicada
 
-[Ver proyecto en vivo](https://alexandra-correa.github.io/pizzeria-mamma-mia/)
+[Ver Pizzería Mamma Mia en GitHub Pages](https://alexandra-correa.github.io/pizzeria-mamma-mia/)
 
 ## Descripción
 
-Pizzería Mamma Mia es una aplicación web desarrollada en React que permite visualizar diferentes pizzas, sus ingredientes y precios.
+Pizzería Mamma Mia es una aplicación web desarrollada con React que permite visualizar diferentes pizzas, sus imágenes, ingredientes y precios.
 
-El proyecto busca aplicar los principales conceptos trabajados durante el módulo, utilizando componentes reutilizables y una estructura organizada.
+El proyecto aplica los conceptos trabajados durante el Módulo 5, utilizando componentes reutilizables, manejo de estados y consumo de una API para obtener la información de las pizzas.
 
 ## Tecnologías utilizadas
 
-* React
-* Vite
-* JavaScript
-* HTML5
-* CSS3
+- React
+- Vite
+- JavaScript
+- HTML5
+- CSS3
+- Fetch API
 
 ## Funcionalidades
 
-* Visualización de pizzas.
-* Tarjetas reutilizables para cada pizza.
-* Visualización de imágenes.
-* Nombre, precio e ingredientes de cada producto.
-* Navbar de navegación.
-* Header principal.
-* Footer.
-* Diseño responsive.
+- Visualización de las pizzas disponibles.
+- Obtención de información desde una API mediante fetch.
+- Uso de useEffect para cargar los datos.
+- Tarjetas reutilizables para mostrar cada pizza.
+- Visualización de imágenes, nombres, precios e ingredientes.
+- Componente para mostrar el detalle de una pizza.
+- Navbar de navegación.
+- Encabezado y pie de página.
+- Diseño adaptable a distintos tamaños de pantalla.
 
 ## Estructura del proyecto
 
 ```text
 pizzeria-mamma-mia/
 ├── public/
+│   └── img/
+│       ├── p001.jpg
+│       ├── p002.jpg
+│       ├── p003.jpg
+│       ├── p004.jpg
+│       ├── p005.jpg
+│       └── p006.jpg
 ├── src/
-│   ├── assets/
 │   ├── components/
 │   │   ├── CardPizza.jsx
 │   │   ├── Footer.jsx
 │   │   ├── Header.jsx
-│   │   └── Navbar.jsx
+│   │   ├── Navbar.jsx
+│   │   └── Pizza.jsx
 │   ├── pages/
-│   │   └── Home.jsx
-│   ├── views/
 │   │   └── Home.jsx
 │   ├── App.css
 │   ├── App.jsx
@@ -58,35 +65,50 @@ pizzeria-mamma-mia/
 
 ## Instalación
 
-Para ejecutar el proyecto localmente, primero se deben instalar las dependencias:
+Es necesario tener Node.js y npm instalados.
+
+Instalar las dependencias:
 
 ```bash
 npm install
 ```
 
-Luego iniciar el servidor de desarrollo:
+Iniciar el servidor de desarrollo:
 
 ```bash
 npm run dev
 ```
 
-La aplicación estará disponible en la dirección local indicada por Vite.
+Vite indicará la dirección local para abrir la aplicación en el navegador.
 
-## Build de producción
+## API
 
-Para generar la versión de producción:
+La aplicación obtiene los datos de las pizzas desde los siguientes endpoints:
+
+- Listado de pizzas: http://localhost:5000/api/pizzas
+- Detalle de pizza: http://localhost:5000/api/pizzas/p001
+
+Para utilizar la API localmente, es necesario iniciar el backend correspondiente en el puerto 5000.
+
+## Construcción de producción
+
+Para generar los archivos de producción:
 
 ```bash
 npm run build
 ```
 
-## Deploy
+## Despliegue
 
 El proyecto está publicado mediante GitHub Pages.
 
-[Ver aplicación publicada](https://alexandra-correa.github.io/pizzeria-mamma-mia/)
+[Acceder a la aplicación publicada](https://alexandra-correa.github.io/pizzeria-mamma-mia/)
 
-## Autor
+## Repositorio
+
+[Ver código fuente en GitHub](https://github.com/alexandra-correa/pizzeria-mamma-mia)
+
+## Autora
 
 Alexandra Correa
 
