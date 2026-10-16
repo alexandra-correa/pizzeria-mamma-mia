@@ -1,6 +1,7 @@
-import { useState } from "react";
+﻿import { useState } from "react";
+import { Link } from "react-router-dom";
 
-function Login({ onLogin, onRegister }) {
+function Login({ onLogin }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -17,34 +18,37 @@ function Login({ onLogin, onRegister }) {
       return;
     }
 
-    onLogin();
+    onLogin(email);
   };
 
   return (
-    <div className="login-container">
-      <div className="login-card">
+    <main className="login-container">
+      <section className="login-card">
         <h1>Iniciar sesión</h1>
 
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>Correo electrónico</label>
-
+            <label htmlFor="login-email">Correo electrónico</label>
             <input
+              id="login-email"
               type="email"
               placeholder="correo@ejemplo.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
           </div>
 
           <div className="form-group">
-            <label>Contraseña</label>
-
+            <label htmlFor="login-password">Contraseña</label>
             <input
+              id="login-password"
               type="password"
               placeholder="Mínimo 6 caracteres"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              minLength={6}
+              required
             />
           </div>
 
@@ -53,19 +57,12 @@ function Login({ onLogin, onRegister }) {
           </button>
         </form>
 
-        <p className="register-text">
-          ¿No tienes una cuenta?
-        </p>
-
-        <button
-          type="button"
-          className="register-button"
-          onClick={onRegister}
-        >
+        <p className="register-text">¿No tienes una cuenta?</p>
+        <Link className="register-button" to="/register">
           Crear cuenta
-        </button>
-      </div>
-    </div>
+        </Link>
+      </section>
+    </main>
   );
 }
 

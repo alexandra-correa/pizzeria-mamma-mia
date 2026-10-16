@@ -1,5 +1,6 @@
 ﻿import { useEffect, useState } from "react";
 import CardPizza from "../components/CardPizza";
+import Header from "../components/Header";
 
 const API_URL = "http://localhost:5000/api/pizzas";
 
@@ -18,9 +19,8 @@ const Home = () => {
         }
 
         const datos = await respuesta.json();
-
         setPizzas(Array.isArray(datos) ? datos : []);
-      } catch (err) {
+      } catch {
         setError(
           "No se pudo conectar con la API. Verifica que el backend esté funcionando en el puerto 5000."
         );
@@ -33,43 +33,45 @@ const Home = () => {
   }, []);
 
   return (
-    <main style={{ padding: "30px 20px", minHeight: "60vh" }}>
-      <h1 style={{ textAlign: "center", marginBottom: "10px" }}>
-        ¡Pizzería Mamma Mía!
-      </h1>
+    <>
+      <Header />
 
-      <p style={{ textAlign: "center", marginBottom: "30px" }}>
-        Nuestras pizzas
-      </p>
+      <main style={{ padding: "30px 20px", minHeight: "60vh" }}>
+        <h2 style={{ textAlign: "center", marginBottom: "30px" }}>
+          Nuestras pizzas
+        </h2>
 
-      {loading && <p style={{ textAlign: "center" }}>Cargando pizzas...</p>}
+        {loading && (
+          <p style={{ textAlign: "center" }}>Cargando pizzas...</p>
+        )}
 
-      {error && (
-        <p role="alert" style={{ textAlign: "center", color: "red" }}>
-          {error}
-        </p>
-      )}
+        {error && (
+          <p role="alert" style={{ textAlign: "center", color: "red" }}>
+            {error}
+          </p>
+        )}
 
-      {!loading && !error && pizzas.length === 0 && (
-        <p style={{ textAlign: "center" }}>
-          No hay pizzas disponibles.
-        </p>
-      )}
+        {!loading && !error && pizzas.length === 0 && (
+          <p style={{ textAlign: "center" }}>
+            No hay pizzas disponibles.
+          </p>
+        )}
 
-      <section
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-          gap: "24px",
-          maxWidth: "1200px",
-          margin: "0 auto",
-        }}
-      >
-        {pizzas.map((pizza) => (
-          <CardPizza key={pizza.id} pizza={pizza} />
-        ))}
-      </section>
-    </main>
+        <section
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+            gap: "24px",
+            maxWidth: "1200px",
+            margin: "0 auto",
+          }}
+        >
+          {pizzas.map((pizza) => (
+            <CardPizza key={pizza.id} pizza={pizza} />
+          ))}
+        </section>
+      </main>
+    </>
   );
 };
 

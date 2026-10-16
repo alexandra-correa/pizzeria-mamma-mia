@@ -1,56 +1,49 @@
-function Navbar({ total = 25840 }) {
-  const token = false;
+﻿import { Link } from "react-router-dom";
 
+function Navbar({ total = 0, isLoggedIn = false, onLogout }) {
   return (
-    <nav
-      className="navbar"
-      style={{
-        backgroundColor: "#222",
-        color: "white",
-        width: "100%",
-        minHeight: "70px",
-        display: "flex",
-        alignItems: "center",
-      }}
-    >
-      <div
-        className="navbar-container"
-        style={{
-          width: "100%",
-          maxWidth: "1200px",
-          margin: "0 auto",
-          padding: "15px 25px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          boxSizing: "border-box",
-        }}
-      >
-        <div style={{ fontSize: "20px", fontWeight: "bold" }}>
-          Pizzería Mamma Mia!
-        </div>
-
-        <div
-          className="navbar-buttons"
-          style={{ display: "flex", alignItems: "center", gap: "10px" }}
+    <nav className="navbar">
+      <div className="navbar-container">
+        <Link
+          to="/"
+          className="navbar-brand"
+          style={{ color: "white", textDecoration: "none" }}
         >
-          <button className="nav-button">Home</button>
+          Pizzería Mamma Mia!
+        </Link>
 
-          {token ? (
+        <div className="navbar-buttons">
+          <Link className="nav-button" to="/">
+            Home
+          </Link>
+
+          {isLoggedIn ? (
             <>
-              <button className="nav-button">Profile</button>
-              <button className="nav-button">Logout</button>
+              <Link className="nav-button" to="/profile">
+                Profile
+              </Link>
+              <button
+                type="button"
+                className="nav-button"
+                onClick={onLogout}
+              >
+                Logout
+              </button>
             </>
           ) : (
             <>
-              <button className="nav-button">Login</button>
-              <button className="nav-button">Register</button>
+              <Link className="nav-button" to="/login">
+                Login
+              </Link>
+              <Link className="nav-button" to="/register">
+                Register
+              </Link>
             </>
           )}
 
-          <button className="nav-button total-button">
-            Total: ${total.toLocaleString("es-CL")}
-          </button>
+          <Link className="nav-button total-button" to="/cart">
+            🛒 Total: ${Number(total).toLocaleString("es-CL")}
+          </Link>
         </div>
       </div>
     </nav>

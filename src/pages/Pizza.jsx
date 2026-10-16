@@ -30,7 +30,7 @@ const Pizza = () => {
   if (error) return <p role="alert" style={{ textAlign: "center", color: "red", padding: "40px" }}>{error}</p>;
   if (!pizza) return <p>No se encontró la pizza.</p>;
 
-  const imagenLocal = "/pizzeria-mamma-mia/img/p001.jpg";
+  const imagenLocal = `${import.meta.env.BASE_URL}img/p001.jpg`;
   const imagenInicial = pizza.img?.includes("firebasestorage") ? imagenLocal : pizza.img;
 
   return (
@@ -65,3 +65,4 @@ const Pizza = () => {
 };
 
 export default Pizza;
+
