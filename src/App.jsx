@@ -16,18 +16,12 @@ import Cart from "./pages/Cart";
 import Pizza from "./pages/Pizza";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
-import { pizzaCart } from "./data/pizzas";
+import { CartProvider } from "./context/CartContext";
 import "./App.css";
-
-const totalInicial = pizzaCart.reduce(
-  (suma, pizza) => suma + pizza.price * pizza.quantity,
-  0
-);
 
 function AppContent() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [email, setEmail] = useState("");
-  const [total, setTotal] = useState(totalInicial);
   const navigate = useNavigate();
 
   const handleLogin = (correo) => {
@@ -50,26 +44,15 @@ function AppContent() {
 
   return (
     <>
-      <Navbar
-        total={total}
-        isLoggedIn={isLoggedIn}
-        onLogout={handleLogout}
-      />
-
+      <Navbar isLoggedIn={isLoggedIn} onLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
           path="/register"
           element={<Register onRegister={handleRegister} />}
         />
-        <Route
-          path="/login"
-          element={<Login onLogin={handleLogin} />}
-        />
-        <Route
-          path="/cart"
-          element={<Cart onTotalChange={setTotal} />}
-        />
+        <Route path="/login" element={<Login onLogin={handleLogin} />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/pizza/p001" element={<Pizza />} />
         <Route
           path="/profile"
@@ -84,7 +67,6 @@ function AppContent() {
         <Route path="/404" element={<NotFound />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-
       <Footer />
     </>
   );
@@ -92,9 +74,11 @@ function AppContent() {
 
 function App() {
   return (
-    <BrowserRouter basename={import.meta.env.BASE_URL}>
-      <AppContent />
-    </BrowserRouter>
+    <CartProvider>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
+        <AppContent />
+      </BrowserRouter>
+    </CartProvider>
   );
 }
 

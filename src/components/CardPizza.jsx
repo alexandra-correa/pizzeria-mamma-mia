@@ -1,10 +1,14 @@
-﻿import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 
 function CardPizza({ pizza }) {
+  const { addToCart } = useCart();
   const id = pizza.id || "p001";
   const imagenLocal = `${import.meta.env.BASE_URL}img/${id}.jpg`;
-  const img = pizza.img || "";
-  const imagenFinal = img.includes("firebasestorage") ? imagenLocal : img;
+  const imagen = pizza.img || imagenLocal;
+  const ingredientes = Array.isArray(pizza.ingredients)
+    ? pizza.ingredients
+    : [];
 
   return (
     <article
@@ -20,7 +24,7 @@ function CardPizza({ pizza }) {
       }}
     >
       <img
-        src={imagenFinal}
+        src={imagen}
         alt={`Pizza ${pizza.name}`}
         onError={(e) => {
           e.currentTarget.onerror = null;
@@ -39,28 +43,45 @@ function CardPizza({ pizza }) {
         <hr />
         <p><strong>Ingredientes:</strong></p>
         <ul>
-          {(Array.isArray(pizza.ingredients) ? pizza.ingredients : []).map(
-            (ingredient, index) => (
-              <li key={`${ingredient}-${index}`}>{ingredient}</li>
-            )
-          )}
+          {ingredientes.map((ingrediente, index) => (
+            <li key={`${ingrediente}-${index}`}>{ingrediente}</li>
+          ))}
         </ul>
         <hr />
         <h3>Precio: ${Number(pizza.price || 0).toLocaleString("es-CL")}</h3>
 
-        <Link
-          to="/pizza/p001"
-          className="nav-button"
-          style={{
-            display: "inline-block",
-            backgroundColor: "#e63946",
-            color: "white",
-            textDecoration: "none",
-            marginTop: "8px",
-          }}
-        >
-          Ver más
-        </Link>
+        <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+          <Link
+            to="/pizza/p001"
+            style={{
+              display: "inline-block",
+              backgroundColor: "#e63946",
+              color: "#fff",
+              textDecoration: "none",
+              marginTop: "8px",
+              padding: "10px 16px",
+              borderRadius: "6px",
+            }}
+          >
+            Ver más
+          </Link>
+
+          <button
+            type="button"
+            onClick={() => addToCart(pizza)}
+            style={{
+              backgroundColor: "#198754",
+              color: "#fff",
+              border: "none",
+              marginTop: "8px",
+              padding: "10px 16px",
+              borderRadius: "6px",
+              cursor: "pointer",
+            }}
+          >
+            Añadir al carrito
+          </button>
+        </div>
       </div>
     </article>
   );

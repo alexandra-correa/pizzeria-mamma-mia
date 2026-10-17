@@ -19,8 +19,18 @@ const Home = () => {
         }
 
         const datos = await respuesta.json();
-        setPizzas(Array.isArray(datos) ? datos : []);
-      } catch {
+
+        const listaPizzas = Array.isArray(datos)
+          ? datos
+          : Array.isArray(datos.value)
+            ? datos.value
+            : Array.isArray(datos.pizzas)
+              ? datos.pizzas
+              : [];
+
+        setPizzas(listaPizzas);
+      } catch (error) {
+        console.error("Error al obtener las pizzas:", error);
         setError(
           "No se pudo conectar con la API. Verifica que el backend esté funcionando en el puerto 5000."
         );
