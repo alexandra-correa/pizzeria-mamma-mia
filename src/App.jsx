@@ -5,6 +5,7 @@ import {
   Route,
   Navigate,
   useNavigate,
+  useLocation,
 } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
@@ -17,56 +18,83 @@ import Pizza from "./pages/Pizza";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 import { CartProvider } from "./context/CartContext";
+import { UserProvider, useUser } from "./context/UserContext";
 import "./App.css";
 
 function AppContent() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { token, login, logout } = useUser();
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogin = (correo) => {
     setEmail(correo);
-    setIsLoggedIn(true);
+    login();
     alert("¡Inicio de sesión exitoso!");
-    navigate("/profile");
+    navigate("/profile", { replace: true });
   };
 
   const handleRegister = (correo) => {
     alert("¡Registro exitoso! Ahora puedes iniciar sesión.");
-    navigate("/login", { state: { email: correo } });
+    navigate("/login", { state: { email: correo }, replace: true });
   };
 
   const handleLogout = () => {
-    setIsLoggedIn(false);
-    setEmail("");
-    navigate("/login");
+    logout();
+    navigate("/login", { replace: true });
   };
 
   return (
     <>
-      <Navbar isLoggedIn={isLoggedIn} onLogout={handleLogout} />
+      <Navbar />
+
       <Routes>
         <Route path="/" element={<Home />} />
+
         <Route
           path="/register"
-          element={<Register onRegister={handleRegister} />}
+          element={
+            token ? (
+              <Navigate to="/" replace />
+            ) : (
+              <Register onRegister={handleRegister} />
+            )
+          }
         />
-        <Route path="/login" element={<Login onLogin={handleLogin} />} />
+
+        <Route
+          path="/login"
+          element={
+            token ? (
+              <Navigate to="/" replace />
+            ) : (
+              <Login
+                key={location.key}
+                onLogin={handleLogin}
+              />
+            )
+          }
+        />
+
         <Route path="/cart" element={<Cart />} />
-        <Route path="/pizza/p001" element={<Pizza />} />
+
+        <Route path="/pizza/:id" element={<Pizza />} />
+
         <Route
           path="/profile"
           element={
-            isLoggedIn ? (
+            token ? (
               <Profile email={email} onLogout={handleLogout} />
             ) : (
               <Navigate to="/login" replace />
             )
           }
         />
+
         <Route path="/404" element={<NotFound />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+
       <Footer />
     </>
   );
@@ -74,11 +102,13 @@ function AppContent() {
 
 function App() {
   return (
-    <CartProvider>
-      <BrowserRouter basename={import.meta.env.BASE_URL}>
-        <AppContent />
-      </BrowserRouter>
-    </CartProvider>
+    <UserProvider>
+      <CartProvider>
+        <BrowserRouter basename={import.meta.env.BASE_URL}>
+          <AppContent />
+        </BrowserRouter>
+      </CartProvider>
+    </UserProvider>
   );
 }
 

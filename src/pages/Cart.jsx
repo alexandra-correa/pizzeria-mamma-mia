@@ -1,7 +1,16 @@
 ﻿import { useCart } from "../context/CartContext";
+import { useUser } from "../context/UserContext";
 
 function Cart() {
-  const { cart, addToCart, decreaseQuantity, removeFromCart, total } = useCart();
+  const {
+    cart,
+    addToCart,
+    decreaseQuantity,
+    removeFromCart,
+    total,
+  } = useCart();
+
+  const { token } = useUser();
 
   return (
     <main className="cart-page">
@@ -14,7 +23,8 @@ function Cart() {
       ) : (
         <div className="cart-list">
           {cart.map((pizza) => {
-            const imagenLocal = `${import.meta.env.BASE_URL}img/${pizza.id}.jpg`;
+            const imagenLocal =
+              `${import.meta.env.BASE_URL}img/${pizza.id}.jpg`;
 
             return (
               <article className="cart-item" key={pizza.id}>
@@ -30,10 +40,13 @@ function Cart() {
                 <div className="cart-item-info">
                   <h2>{pizza.name}</h2>
                   <p>
-                    Precio unitario: ${Number(pizza.price || 0).toLocaleString("es-CL")}
+                    Precio unitario: $
+                    {Number(pizza.price || 0).toLocaleString("es-CL")}
                   </p>
                   <p>
-                    Subtotal: ${(Number(pizza.price || 0) * pizza.quantity).toLocaleString("es-CL")}
+                    Subtotal: $
+                    {(Number(pizza.price || 0) * pizza.quantity)
+                      .toLocaleString("es-CL")}
                   </p>
                 </div>
 
@@ -70,9 +83,22 @@ function Cart() {
 
       <div className="cart-total">
         <h2>Total: ${total.toLocaleString("es-CL")}</h2>
-        <button type="button" className="pay-button" disabled={cart.length === 0}>
+        <button
+          type="button"
+          className="pay-button"
+          disabled={!token || cart.length === 0}
+          onClick={() => {
+            if (token && cart.length > 0) {
+              alert("¡Pedido listo para pagar!");
+            }
+          }}
+        >
           Pagar
         </button>
+
+        {!token && (
+          <p>Debes iniciar sesión para pagar.</p>
+        )}
       </div>
     </main>
   );

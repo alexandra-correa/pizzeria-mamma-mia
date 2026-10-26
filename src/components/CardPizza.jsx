@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+﻿import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 
 function CardPizza({ pizza }) {
@@ -48,11 +48,13 @@ function CardPizza({ pizza }) {
           ))}
         </ul>
         <hr />
-        <h3>Precio: ${Number(pizza.price || 0).toLocaleString("es-CL")}</h3>
+        <h3>
+          Precio: ${Number(pizza.price || 0).toLocaleString("es-CL")}
+        </h3>
 
         <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
           <Link
-            to="/pizza/p001"
+            to={`/pizza/${encodeURIComponent(id)}`}
             style={{
               display: "inline-block",
               backgroundColor: "#e63946",
